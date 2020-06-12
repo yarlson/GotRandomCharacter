@@ -50,5 +50,5 @@ dockers:
     image_templates:
       - "yarlson/gotrandomcharacter:latest"
       - "yarlson/gotrandomcharacter:{{ .Tag }}"
-    skip_push: true
+    skip_push: false
     dockerfile: Dockerfile
