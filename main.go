@@ -9,15 +9,11 @@ import (
 	"time"
 )
 
-type Character []struct {
-	V         int64    `json:"__v"`
-	ID        string   `json:"_id"`
-	Locations []string `json:"locations"`
-	Name      string   `json:"name"`
-	Slug      string   `json:"slug"`
+type Character struct {
+	Name string `json:"name"`
 }
 
-const url = "https://api.got.show/api/characters/locations"
+const url = "https://api.got.show/api/book/characters"
 
 func main() {
 	res, err := http.Get(url)
@@ -30,7 +26,8 @@ func main() {
 		panic(err.Error())
 	}
 
-	characters := Character{}
+	var characters []Character
+
 	err = json.Unmarshal(body, &characters)
 	if err != nil {
 		panic(err.Error())
